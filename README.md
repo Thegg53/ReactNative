@@ -4,21 +4,34 @@
 cmd line0: ./studio.sh                   in android studio folder, then start AVD
 
 Open 2 consoles, do the following commands in each except on step4, there is 4a and 4b
+
 1 ) source $HOME/.bash_profile
+
 2 ) echo $PATH
+
 3 ) sudo sysctl -w fs.inotify.max_user_instances=1024
+
    sudo sysctl -w fs.inotify.max_user_watches=12288
+   
 4a )
 cd ~/react_tutorials/2018_03_12/myFirstProj
+
 on one console do (cmd line1:):
+
 sudo npm start
+
 to create a server, and in another one (cmd line2:)
+
 sudo react-native run-android
 
 or 4b)
+
 cmd line1:
+
 sudo react-native-scripts start           in project folder
+
 cmd line2:
+
 sudo react-native run-android      in project folder
 
 _________________________________________________________________
