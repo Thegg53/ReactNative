@@ -16,7 +16,13 @@ Open 2 consoles, do the following commands in each except on step4, there is 4a 
 3 ) sudo sysctl -w fs.inotify.max_user_instances=1024
 
    sudo sysctl -w fs.inotify.max_user_watches=12288
-   
+
+All of those in one line:
+
+
+source $HOME/.bash_profile && echo $PATH && sudo sysctl -w fs.inotify.max_user_instances=1024 && sudo sysctl -w fs.inotify.max_user_watches=12288
+
+
 4a )
 cd ~/react_tutorials/2018_03_12/myFirstProj
 
