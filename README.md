@@ -1,3 +1,241 @@
+Front End is now fully working. See some screen captured from the app in this branch.
+Small improvements to the API are needed as well as some documentation, all of which will come tomorrow (2018-03-15)
+
+
+# REACT NATIVE + ANDROID STUDIO
+
+## To run the app in the AVD:
+cmd line0: ./studio.sh                   in android studio folder, then start AVD
+
+Open 2 consoles, do the following commands in each except on step4, there is 4a and 4b
+
+1 ) source $HOME/.bash_profile
+
+2 ) echo $PATH
+
+3 ) sudo sysctl -w fs.inotify.max_user_instances=1024
+
+   sudo sysctl -w fs.inotify.max_user_watches=12288
+   
+4a )
+cd ~/react_tutorials/2018_03_12/myFirstProj
+
+on one console do (cmd line1:):
+
+sudo npm start
+
+to create a server, and in another one (cmd line2:)
+
+sudo react-native run-android
+
+or 4b)
+
+cmd line1:
+
+sudo react-native-scripts start           in project folder
+
+cmd line2:
+
+sudo react-native run-android      in project folder
+
+_________________________________________________________________
+
+react native only works with npm4, not npm5. To install npm4:
+npm install -g npm@4
+
+to install react-native
+sudo npm install -g create-react-native-app
+
+to start a project
+create-react-native-app myFirstProj
+
+android studio:
+https://developer.android.com/studio/index.html
+
+19:18:24: Unable to start server
+  See https://git.io/v5vcn for more information, either install watchman or run the following snippet:
+    sudo sysctl -w fs.inotify.max_user_instances=1024
+    sudo sysctl -w fs.inotify.max_user_watches=12288
+https://medium.com/@vonchristian/how-to-setup-watchman-on-ubuntu-16-04-53196cc0227c
+
+
+
+
+Installation instructions:
+http://facebook.github.io/react-native/docs/getting-started.html
+
+
+
+
+To run android studio:
+cd to android-studio/bin
+then run the following:
+./studio.sh
+
+
+If android virtual device button is grey
+Close android studio
+Delete the .idea folder in the project
+Reopen android studio, relaunch the project
+https://stackoverflow.com/questions/41290134/android-studio-avd-manager-button-is-disabled
+
+
+
+Add the following lines to your $HOME/.bash_profile config file:
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+then, run
+source $HOME/.bash_profile
+to import those into the current shell
+
+
+To run the app in the AVD:
+cmd line0: ./studio.sh                   in android studio folder, then start AVD
+
+Open 2 consoles, do the following commands in each except on step4, there is 4a and 4b
+1) source $HOME/.bash_profile
+2) echo $PATH
+3) sudo sysctl -w fs.inotify.max_user_instances=1024
+   sudo sysctl -w fs.inotify.max_user_watches=12288
+4a)
+cd ~/react_tutorials/2018_03_12/myFirstProj
+on one console do (cmd line1:):
+sudo npm start
+to create a server, and in another one (cmd line2:)
+sudo react-native run-android
+
+or 2)
+cmd line1:
+sudo react-native-scripts start           in project folder
+cmd line2:
+sudo react-native run-android      in project folder
+
+
+to enable logging, open a terminal in project folder and type the following:
+react-native log-android
+
+1hour crash course
+https://www.youtube.com/watch?v=mkualZPRZCs
+https://github.com/bradtraversy/reactnativeapp
+
+25minute to do list
+https://www.youtube.com/watch?v=xb8uTN3qiUI
+
+Nu Apps tutorials: 6 short videos
+https://www.youtube.com/watch?v=oR-0wePpQPk&t=0s&index=1&list=PLCQZxK8e2sqr6oLCRGZlJylNwhJI7VjRQ
+
+virtualbox mac ossierra for ubuntu
+https://www.youtube.com/watch?v=pVc6rxk3OUM
+https://www.youtube.com/watch?v=L6aF71hj6kE
+
+
+REACT_NATIVE development notes:
+ return fetch('http://10.0.2.2:3001/episodes/49288') //https://stackoverflow.com/questions/5528850/how-to-connect-localhost-in-android-emulator
+
+TouchableHighlight has onPress method
+
+NAVIGATOR example https://youtu.be/mkualZPRZCs?t=4634
+https://github.com/bradtraversy/reactnativeapp :
+Navigator   render {
+		return(
+		<Navigator
+			initialRoute={{id: 'componentName'}}
+			renderScene={this.renderScene}
+			configureScreen={(route, routeStack) => Navigator.SceneConfigs.FloatFromBottom}
+		/>
+		)}
+
+renderScene(route, navigator){
+	switch(route.id){
+			case 'component5':
+        return (<Component5 navigator={navigator} title="component5" />)
+      case 'component6': //details page
+          return (<Component6 user={route.user} navigator={navigator} title="component6" />)
+
+      }
+}
+
+<TouchableHighlight onPress={() => {this.onPress(user)}}>
+
+onPress(user){
+  //console.log(user);
+  this.props.navigator.push({
+    id: 'component6', //the name in the switch for details page
+    user: user
+  })
+}
+
+
+///////////////////////
+POSTGRESQL
+Install:
+sudo apt-get install postgresql postgresql-contrib
+
+to enter the postgres console:
+sudo -u postgres psql
+
+there you should see postgres=#
+type the following to change the postgres user password
+
+\password postgres
+
+after the password is changed, create the database
+create database "databaseName withotht double quotes";
+
+
+
+
+Windows
+add psql to the environment variables
+https://siteofachyu.wordpress.com/2017/11/03/psql-not-recognized-as-an-internal-or-external-command-in-windows/
+https://www.youtube.com/watch?v=fD7x8hd9yE4
+
+////////////////////
+
+
+Upon connecting to the postgreSQL database, it is possible that installing the pg package manually is requires. Use the command below:
+npm i -S pg
+
+/////////////////////////////////
+
+if running both the server and the app on the same domain, and using google chrome to view the app, enable CORS requests (i used this plugin)
+
+https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-app-launcher-info-dialog
+/////////////////////////////////
+Ian Munro Tutorials:
+https://www.youtube.com/watch?v=5yOWs4Qarg4
+
+https://github.com/ianmunrobot/1702-express-review
+
+github ianmunrobot/1702, file modules/Puppy.js
+https://github.com/ianmunrobot/1702-express-review/blob/master/models/Puppy.js
+
+change instance method to new sequelize call sequelize (v4)
+PuppyDB.prototype.greet = function() {
+   return 'Woof my name is ' + this.fullName
+}
+
+same problem with the class methods
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
